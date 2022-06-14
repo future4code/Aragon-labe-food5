@@ -8,12 +8,12 @@ import { requestCadastro } from '../services/requests';
 export default function SignupAddressPage() {
 
     const [form, setForm] = useState({
-        rua: "",
-        numero: "",
-        complemento: "",
-        bairro: "",
-        cidade: "",
-        estado: ""
+        street: "",
+        number: "",
+        complement: "",
+        district: "",
+        city: "",
+        state: ""
     })
 
     const navigate = useNavigate()
