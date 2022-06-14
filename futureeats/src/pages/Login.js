@@ -44,10 +44,23 @@ export default function Login () {
 				<h1>Login</h1>
 				<form onSubmit={login}>
 					<label htmlFor="email" >E-mail:</label>
-					<input id="email" name="email" value={form.email} onChange={onChangeForm} required/>
+					<input 
+					id="email" 
+					name="email" 
+					value={form.email} 
+					onChange={onChangeForm} 
+					required
+					/>
 					<br />
 					<label htmlFor="senha" >Senha:</label>
-					<input id="senha" name="password" value={form.password} type="password" required onChange={onChangeForm} />
+					<input 
+					id="senha" 
+					name="password" 
+					value={form.password} 
+					type="password" 
+					required 
+					onChange={onChangeForm} 
+					/>
 					<br />
 					<button onClick={()=> goToFeedPage(navigate)}>Entrar</button>
 				</form>

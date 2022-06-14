@@ -15,7 +15,7 @@ function Router () {
             <Routes>
                 <Route index element={<FeedPage/>}/>
                 <Route path="/login" element={<Login/>}/>
-                <Route path="/address" element={<SignupAddressPage/>}/>
+                <Route path="/signup/address" element={<SignupAddressPage/>}/>
                 <Route path="/signup" element={<Cadastro/>}/>
                 <Route path="/profile" element={<Perfil/>}/>
                 <Route path="/cart" element={<Carrinho/>}/>
