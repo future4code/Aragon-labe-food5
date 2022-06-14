@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
-import { goToFeedPage, goToLoginPage } from '../routes/coordinator';
+import { goToSignupAddressPage, goToLoginPage } from '../routes/coordinator';
 import { Button } from '@mui/material';
 import { requestCadastro } from '../services/requests';
-import goToSignupAddressPage from './SignupAddressPage';
 
 
 export default function Cadastro () {
@@ -40,22 +39,47 @@ export default function Cadastro () {
 				<h1>Cadastro</h1>
 				<form onSubmit={cadastro}>
 					<label htmlFor="nome" >Nome:</label>
-					<input id="nome" name="name" value={form.name} onChange={onChangeForm} required />
+					<input 
+					id="nome" 
+					name="name" 
+					value={form.name} 
+					onChange={onChangeForm} 
+					required
+					/>
 					<br />
-					<br/>
+					<br />
 					<label htmlFor="email" >E-mail:</label>
-					<input id="email" name="email" value={form.email} onChange={onChangeForm} required />
+					<input 
+					id="email" 
+					name="email" 
+					value={form.email} 
+					onChange={onChangeForm} 
+					required
+					/>
 					<br />
-					<br/>
+					<br />
 					<label htmlFor="cpf" >CPF:  </label>
-					<input id="cpf"pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" name="cpf" value={form.cpf} 
-                    required onChange={onChangeForm} />
-					<br/>
-					<br/>
+					<input 
+					id="cpf"
+					pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" 
+					name="cpf" 
+					value={form.cpf} 
+                    required 
+					onChange={onChangeForm} 
+					/>
+					<br />
+					<br />
 					<label htmlFor="senha" >Senha:</label>
-					<input id="senha" name="password" value={form.password} type= {"password"} required onChange={onChangeForm} />
+					<input 
+					id="senha" 
+					name="password" 
+					value={form.password} 
+					type={"password"} 
+					required 
+					onChange={onChangeForm} 
+					/>
 					<br />		
-					<br/>
+					<br />
                     <Button onClick={cadastro} variant="contained">Criar</Button>
 				</form>
 				<br/>
