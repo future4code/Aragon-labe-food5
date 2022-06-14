@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
-import { goToFeedPage, goToSignupAddressPage } from '../routes/coordinator';
+import { goToFeedPage, goToLoginPage, goToSignupAddressPage } from '../routes/coordinator';
 import { Button } from '@mui/material';
-import { requestCadastro } from '../services/requests';
+import { requestAddress } from '../services/requests';
 
 
 export default function SignupAddressPage() {
@@ -11,7 +11,7 @@ export default function SignupAddressPage() {
         street: "",
         number: "",
         complement: "",
-        district: "",
+        neighbourhood: "",
         city: "",
         state: ""
     })
@@ -23,14 +23,15 @@ export default function SignupAddressPage() {
     }
 
     const cadastro = (e) => {
+        console.log(form)
         e.preventDefault()
-        requestCadastro(form, navigate)
+        requestAddress(form, navigate)
     }
 
     useEffect(() => {
         const token = window.localStorage.getItem("token-labefood")
-        if (token) {
-            goToSignupAddressPage(navigate)
+        if (!token) {
+            goToLoginPage(navigate)
         }
     }, [])
 
@@ -77,8 +78,8 @@ export default function SignupAddressPage() {
                     <input
                     placeholder='Bairro'
                     id="bairro" 
-                    name="district" 
-                    value={form.district} 
+                    name="neighbourhood" 
+                    value={form.neighbourhood} 
                     onChange={onChangeForm} 
                     required 
                     />
@@ -106,7 +107,7 @@ export default function SignupAddressPage() {
                     />
                     <br />
                     <br />
-                    <Button onClick={() => goToFeedPage(navigate)} variant="contained">Cadastrar</Button>
+                    <Button type="submit" variant="contained">Cadastrar</Button>
                 </form>
                 <br />
             </main>

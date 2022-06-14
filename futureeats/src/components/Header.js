@@ -1,13 +1,13 @@
 import React from 'react';
 
-function EditarPerfil () {
-    
+function Header () {
+
         return (
             <div>
-                EditarPerfil
+                <h1>Future Eats</h1>
             </div>
         );
     
 }
 
-export default EditarPerfil;
+export default Header;
