@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
-import { goToFeedPage, goToLoginPage, goToSignupAddressPage } from '../routes/coordinator';
+import { goToLoginPage } from '../routes/coordinator';
 import { Button } from '@mui/material';
 import { requestAddress } from '../services/requests';
 
@@ -22,7 +22,7 @@ export default function SignupAddressPage() {
         setForm({ ...form, [e.target.name]: e.target.value })
     }
 
-    const cadastro = (e) => {
+    const register = (e) => {
         console.log(form)
         e.preventDefault()
         requestAddress(form, navigate)
@@ -40,7 +40,7 @@ export default function SignupAddressPage() {
             {/* <Header  /> */}
             <main>
                 <h1>Cadastro de Endereço</h1>
-                <form onSubmit={cadastro}>
+                <form onSubmit={register}>
                     <label htmlFor="rua" >Rua:</label>
                     <input 
                     placeholder='Rua'

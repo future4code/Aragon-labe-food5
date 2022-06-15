@@ -3,7 +3,7 @@ import { BASE_URL } from "../constants/urls"
 import { goToFeedPage, goToSignupAddressPage } from "../routes/coordinator"
 
 
-export const requestCadastro = (form, navigate) => {
+export const requestSignup = (form, navigate) => {
   axios.post(`${BASE_URL}/signup`, form)
     .then((res) => {
       alert("Cadastrado com sucesso")
@@ -54,7 +54,7 @@ export const requestLogin = (form, navigate) => {
 export const getRestaurantDetail = async (restaurantId) => {
   const header = {
     headers: {
-      auth: JSON.parse(localStorage.getItem("labefood")).token,
+      auth: (localStorage.getItem("labefood")).token,
     },
   };
   try {

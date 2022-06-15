@@ -39,9 +39,9 @@ export default function Login () {
 					<TextField id="outlined-basic" label="Outlined" variant="outlined" name="email" value={form.email} onChange={onChangeForm} required/>
 					<br />
 					<label htmlFor="senha" >Senha:</label>
-					<input id="senha" name="password" value={form.password} type="password" required onChange={onChangeForm} />
+					<TextField id="outlined-basic" label="Outlined" variant="outlined"   name="password" value={form.password} type="password" required onChange={onChangeForm} />
 					<br />
-					<Button onClick={() => goToFeedPage(navigate)} variant="contained">Entrar</Button>
+					<Button type="submit" variant="contained">Entrar</Button>
 				</form>
 				<br/>
 				<Button onClick={() => goToSignup(navigate)} variant="contained">Cadastrar</Button>

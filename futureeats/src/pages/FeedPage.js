@@ -1,21 +1,19 @@
 import { Button } from '@mui/material';
-import { goToLoginPage } from '../routes/coordinator';
+import { goToDetailsPage, goToLoginPage } from '../routes/coordinator';
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from 'react';
-import { getRestaurants } from '../services/requests';
 import { BASE_URL } from '../constants/urls';
 import axios from "axios"
 import Header from '../components/Header';
-function FeedPage() {
+import RestaurantCard from '../components/RestaurantCard';
 
-    // const {restaurantId} = useParams()
-    // const [restaurant] = useRestaurantDetail(restaurantId)
-    // const storeContext = useContext(StoreContext)
+function FeedPage() {
 
     const navigate = useNavigate()
 
-    const [listRestaurants, setListRestaurants] = useState([])
+    const [restaurants, setRestaurants] = useState([])
 
+    const [find,setFind] = useState("")
 
 
     const logout = () => {
@@ -34,6 +32,10 @@ function FeedPage() {
         getRestaurants()
     }, [])
 
+    const onChangeFind = (e) => {
+        setFind(e.target.value)
+    }
+
     const getRestaurants = async () => {
         try {
             const response = await axios.get(`${BASE_URL}/restaurants`, {
@@ -41,7 +43,7 @@ function FeedPage() {
                     auth: window.localStorage.getItem("token-labefood")
                 }
             });
-            setListRestaurants(response.data.restaurants)
+            setRestaurants(response.data.restaurants)
         } catch (error) {
             console.log(error.response.data.message);
             return error.response.data;
@@ -49,28 +51,36 @@ function FeedPage() {
     };
 
 
+    const showRestaurants = restaurants? restaurants
+    .filter((restaurant)=> {
+        const textFind = find.toLowerCase()
+        const restaurantsFiltered = restaurant.name.toLowerCase()
+        const restaurantsDescriptionFiltered = restaurant.description.toLowerCase()
+        return restaurantsFiltered.includes(textFind) || 
+        restaurantsDescriptionFiltered.includes(textFind)
+    })
+    .map((restaurant) => {
+        return(
+            <RestaurantCard
+            key={restaurant.restaurantId}
+            restaurant={restaurant}
+            />
+        )
+    }):<p>Carregando...</p>
+        
 
     return (
         <main>
             <Header />
             <Button onClick={logout} >Sair</Button>
-            <input placeholder='Buscar Restaurante'  ></input>
-            {listRestaurants.map((restaurants) => (
-
-                <article key={restaurants.id}>
-                    <hr />
-                    <button ><img src={restaurants.logoUrl} alt="name"></img></button>
-                    <h2 >{restaurants.name}</h2>
-                    <h2>{restaurants.address}</h2>
-                    <h2>{restaurants.deliveryTime - 10}
-                        {" - "}
-                        {restaurants.deliveryTime + 10}
-                        {" min"}</h2>
-                    <h2>{restaurants.category}</h2>
-                    <h2>frete:R$ {restaurants.shipping},00 </h2>
-                </article>
-            ))}
-
+            <input 
+            value={find} 
+            onChange={onChangeFind} 
+            placeholder='Buscar Restaurante'
+            />
+            {showRestaurants}
+            
+            {/* <Footer/> */}
         </main>
     );
 

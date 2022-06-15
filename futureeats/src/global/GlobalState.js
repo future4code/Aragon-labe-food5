@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useState } from "react";
 import { BASE_URL } from "../constants/urls";
-import { convertCPF } from "../utils/convertCPF";
-import { GlobalStateContext } from "./GlobalStateContext";
+import  GlobalStateContext  from "./GlobalStateContext";
+
 
 function GlobalState(props) {
 
@@ -11,31 +11,20 @@ function GlobalState(props) {
     const [signUp, setSignUp] = useState({
         name: "",
         email: "",
-        cpf: convertCPF(""),
+        cpf:"",
         password: "",
     });
-
-
-    const [activeOrder, setActiveOrder] = useState({})
-    const [dataProfile, setDataProfile] = useState({})
-    const [cart, setCart] = useState([])
-    const [cartId, setCartId] = useState([])
-    const [shipping, setShipping] = useState([])
-    const [shippingId, setShippingId] = useState([])
-    const [isActiveOrder, setIsActiveOrder] = useState(false)
-
     const [profile, setProfile] = useState({})
 
-    const [checker, setChecker] = useState({ email: "", password: "" })
-
     const [address, setAddress] = useState({
-        "street": "",
-        "number": "",
-        "neighbourhood": "",
-        "city": "",
-        "state": "",
-        "complement": ""
+        street: "",
+        number: "",
+        neighbourhood: "",
+        city: "",
+        state: "",
+        complement: ""
     })
+    const [checker, setChecker] = useState({ emailConfirm: "", passwordConfirm: "" })
 
     const [restaurants, setRestaurants] = useState([])
 
@@ -56,7 +45,7 @@ function GlobalState(props) {
         setRestaurants: setRestaurants
     };
 
-    const token = localStorage.getItem("token")
+    const token = localStorage.getItem("token-labefood")
 
     const headers = {
         headers: {
@@ -69,7 +58,7 @@ function GlobalState(props) {
             .post(`${BASE_URL}/login`, login)
             .then((res) => {
                 console.log(res.data);
-                localStorage.setItem("token", res.data.token);
+                localStorage.setItem("token-labefood", res.data.token);
             })
             .catch((err) => {
                 alert("Usuário ou senha inválidos");
@@ -82,7 +71,7 @@ function GlobalState(props) {
             .post(`${BASE_URL}/signup`, signUp)
             .then((res) => {
                 alert("Cadastro realizado com sucesso!")
-                localStorage.setItem("token", res.data.token)
+                localStorage.setItem("token-labefood", res.data.token)
             })
             .catch((err) => {
                 alert("Dados inválidos");
@@ -93,7 +82,7 @@ function GlobalState(props) {
     const addAddress = () => {
         axios.put(`${BASE_URL}/address`, address, headers)
             .then((res) => {
-                localStorage.setItem("token", res.data.token)
+                localStorage.setItem("token-labefood", res.data.token)
             })
             .catch((err) => {
                 console.log(err.response)
