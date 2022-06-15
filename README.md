@@ -1,16 +1,16 @@
-# Projeto LabeFood
+## Projeto LabeFood
 
-# Participantes:
+## Participantes:
 
 - @juliasbz
 - @
 - @
 - @
 
-# Link Surge:
+## Link Surge:
 
-- 
+ 
 
-# O que funciona:
+## O que funciona:
 
-# O que não funciona:
+## O que não funciona:
