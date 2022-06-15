@@ -1,8 +1,11 @@
 const [nomeProduto, setNomeProduto] = useState()
 
+
 export const onChangeNomeProduto = (event) => {
     this.setState({ nomeProduto: event.target.value })
 }
+
+    
 
 <input>
     Busca por nome:

@@ -54,20 +54,23 @@ function FeedPage() {
         <main>
             <Header />
             <Button onClick={logout} >Sair</Button>
+            <input placeholder='Buscar Restaurante'  ></input>
             {listRestaurants.map((restaurants) => (
 
                 <article key={restaurants.id}>
+                    <hr />
                     <button ><img src={restaurants.logoUrl} alt="name"></img></button>
-                    <h2>{restaurants.name}</h2>
+                    <h2 >{restaurants.name}</h2>
                     <h2>{restaurants.address}</h2>
-                    <h2>Tempo de entrega: {restaurants.deliveryTime} min</h2>
+                    <h2>{restaurants.deliveryTime - 10}
+                        {" - "}
+                        {restaurants.deliveryTime + 10}
+                        {" min"}</h2>
                     <h2>{restaurants.category}</h2>
                     <h2>frete:R$ {restaurants.shipping},00 </h2>
-                    <h2><button></button></h2>
-                    
                 </article>
-
             ))}
+
         </main>
     );
 
