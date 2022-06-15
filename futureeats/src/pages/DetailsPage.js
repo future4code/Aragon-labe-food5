@@ -1,13 +1,13 @@
 import React from 'react';
 
-function Perfil () {
+function DetailsPage () {
     
         return (
             <div>
-                Perfil
+                Cardapio
             </div>
         );
     
 }
 
-export default Perfil;
+export default DetailsPage;

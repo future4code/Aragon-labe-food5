@@ -1,13 +1,13 @@
 import React from 'react';
 
-function Carrinho () {
+function Profile () {
     
         return (
             <div>
-               Carrinho
+                Profile
             </div>
         );
     
 }
 
-export default Carrinho;
+export default Profile;

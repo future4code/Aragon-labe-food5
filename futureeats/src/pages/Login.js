@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
-import axios from "axios"
+import Header from '../components/Header';
 import { goToFeedPage, goToSignup } from '../routes/coordinator';
+import { requestLogin } from '../services/requests';
+import { Button, TextField } from '@mui/material';
 
 export default function Login () {
 	const [form, setForm] = useState({
@@ -17,17 +19,7 @@ export default function Login () {
 
 	const login = (e) => {
 		e.preventDefault()
-		axios.post ("https://us-central1-missao-newton.cloudfunctions.net/{{appName}}/login", form)
-			.then((res) => {
-				alert(res.data.message)
-				window.localStorage.setItem("token-labefood", res.data.token)
-				goToFeedPage(navigate)
-                console.log(form)
-			})
-			.catch((err) => {
-               			console.error("Erro ao se cadastrar")
-               			console.log(err)
-            		})
+		requestLogin(form,navigate)
     	}
 
     	useEffect(() => {
@@ -39,32 +31,21 @@ export default function Login () {
 
 	return (
 		<section>
-			{/* <Header  /> */}
+			<Header  />
 			<main>
 				<h1>Login</h1>
 				<form onSubmit={login}>
 					<label htmlFor="email" >E-mail:</label>
-					<input 
-					id="email" 
-					name="email" 
-					value={form.email} 
-					onChange={onChangeForm} 
-					required
-					/>
+					<TextField id="outlined-basic" label="Outlined" variant="outlined" name="email" value={form.email} onChange={onChangeForm} required/>
 					<br />
 					<label htmlFor="senha" >Senha:</label>
-					<input 
-					id="senha" 
-					name="password" 
-					value={form.password} 
-					type="password" 
-					required 
-					onChange={onChangeForm} 
-					/>
+					<input id="senha" name="password" value={form.password} type="password" required onChange={onChangeForm} />
 					<br />
-					<button onClick={()=> goToFeedPage(navigate)}>Entrar</button>
+					<Button onClick={() => goToFeedPage(navigate)} variant="contained">Entrar</Button>
 				</form>
-				<button onClick={() => goToSignup(navigate)}>Cadastrar</button>
+				<br/>
+				<Button onClick={() => goToSignup(navigate)} variant="contained">Cadastrar</Button>
+				{/* <TextField id="outlined-basic" label="Outlined" variant="outlined" /> */}
 			</main>
 		</section>
 	)

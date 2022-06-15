@@ -1,72 +1,76 @@
-import React, { useEffect, useState } from 'react';
+import { Button } from '@mui/material';
+import { goToLoginPage } from '../routes/coordinator';
+import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from 'react';
+import { getRestaurants } from '../services/requests';
 import { BASE_URL } from '../constants/urls';
-import useProtectedPage from '../hooks/useProtectedPage';
+import axios from "axios"
+import Header from '../components/Header';
+function FeedPage() {
 
-// const FeedPage = () => {
-//     useProtectedPage()
-// }
+    // const {restaurantId} = useParams()
+    // const [restaurant] = useRestaurantDetail(restaurantId)
+    // const storeContext = useContext(StoreContext)
 
-    // const [restaurantes, setRestaurantes] = useState([])
-    // const [todosRestaurantes, setTodosRestaurantes] = useState([])
-    // const [flagRestaurantes, setFlagRestaurantes] = useState(false)
-    // const [burguerFilter, setBurguerFilter] = useState(false)
-    // const [asiaticaFilter, setAsiaticaFilter] = useState(false)
-    // const [massaFilter, setMassaFilter] = useState(false)
-    // const [saudaveisFilter, setSaudaveisFilter] = useState(false)
-    // const [arabeFilter, setArabeFilter] = useState(false)
-    // const [sorvetesFilter, setSorvetesFilter] = useState(false)
-    // const [carnesFilter, setCarnesFilter] = useState(false)
-    // const [baianaFilter, setBaianaFilter] = useState(false)
-    // const [petiscosFilter, setPetiscosFilter] = useState(false)
-    // const [mexicanaFilter, setMexicanaFilter] = useState(false)
-    // const [form, onChange, clear] = useForm({name:''})
-    // const [isLoading, setIsLoading] = useState(false)
+    const navigate = useNavigate()
 
-    // useEffect(()=> {
-    //     const headers = {
-    //         headers: {
-    //             authorization: window.localStorage.getItem("token"),
-    //             "content-type": "application/json"
-    //         }
-    //     }
-    //     setIsLoading(true)
+    const [listRestaurants, setListRestaurants] = useState([])
 
-    //     axios.get(`${BASE_URL}/restaurants`, headers)
-    //     .then(()=> {
-    //         setRestaurantes(response.data.restaurants)
-    //         setTodosRestaurantes(response.data.restaurants)
-    //         setIsLoading(false)
-    //     })
-    //     .catch((error)=> {
-    //         console.log(error.data)
-    //     })
-    // },[flagRestaurantes])
 
-    // const filtroBotoes = (filtro,desliga)=> {
-    //     if (filtro==="burguer") {
-    //         setBurguerFilter(!burguerFilter)
-    //         setAsiaticaFilter(false)
-    //         setMassaFilter(false)
-    //         setArabeFilter(false)
-    //         setSorvetesFilter(false)
-    //         setCarnesFilter(false)
-    //         setBaianaFilter(false)
-    //         setPetiscosFilter(false)
-    //         setMexicanaFilter(false)
-    //     }
-    //     const listaFiltrada = todosRestaurantes && todosRestaurantes.filter((restaurante)= > {
-            
-    //     })
-    // }
 
-function FeedPage () {
-    
-        return (
-            <div>
-                FeedPage
-            </div>
-        );
-    
+    const logout = () => {
+        window.localStorage.removeItem("token-labefood")
+        goToLoginPage(navigate)
+    }
+
+    useEffect(() => {
+        const token = window.localStorage.getItem("token-labefood")
+        if (!token) {
+            goToLoginPage(navigate)
+        }
+    }, [])
+
+    useEffect(() => {
+        getRestaurants()
+    }, [])
+
+    const getRestaurants = async () => {
+        try {
+            const response = await axios.get(`${BASE_URL}/restaurants`, {
+                headers: {
+                    auth: window.localStorage.getItem("token-labefood")
+                }
+            });
+            setListRestaurants(response.data.restaurants)
+        } catch (error) {
+            console.log(error.response.data.message);
+            return error.response.data;
+        }
+    };
+
+
+
+    return (
+        <main>
+            <Header />
+            <Button onClick={logout} >Sair</Button>
+            {listRestaurants.map((restaurants) => (
+
+                <article key={restaurants.id}>
+                    <button ><img src={restaurants.logoUrl} alt="name"></img></button>
+                    <h2>{restaurants.name}</h2>
+                    <h2>{restaurants.address}</h2>
+                    <h2>Tempo de entrega: {restaurants.deliveryTime} min</h2>
+                    <h2>{restaurants.category}</h2>
+                    <h2>frete:R$ {restaurants.shipping},00 </h2>
+                    <h2><button></button></h2>
+                    
+                </article>
+
+            ))}
+        </main>
+    );
+
 }
 
 export default FeedPage;

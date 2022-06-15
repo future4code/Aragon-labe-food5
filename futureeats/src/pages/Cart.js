@@ -1,13 +1,13 @@
 import React from 'react';
 
-function DetalhesPage () {
+function Cart () {
     
         return (
             <div>
-                Cardapio
+               Cart
             </div>
         );
     
 }
 
-export default DetalhesPage;
+export default Cart;

@@ -3,9 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { goToSignupAddressPage, goToLoginPage } from '../routes/coordinator';
 import { Button } from '@mui/material';
 import { requestCadastro } from '../services/requests';
+import Header from '../components/Header';
 
 
-export default function Cadastro () {
+export default function Signup () {
 
 	const [form, setForm] = useState({
 		email: "",
@@ -34,7 +35,7 @@ export default function Cadastro () {
 
 	return (
 		<section>
-			{/* <Header  /> */}
+			<Header  />
 			<main>
 				<h1>Cadastro</h1>
 				<form onSubmit={cadastro}>
