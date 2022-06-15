@@ -3,7 +3,7 @@ export const goToSignup = (navigate) => {
 }
 
 export const goToFeedPage = (navigate) => {
-    navigate("/")
+    navigate("/feedPage")
 }
 
 export const goToLoginPage = (navigate) => {
@@ -20,4 +20,8 @@ export const goToRestaurant = (navigate) => {
 
 export const goToSignupAddressPage = (navigate) => {
     navigate('/signup/address')
+}
+
+export const goBack = (navigate) => {
+    navigate(-1)
 }

@@ -1,13 +1,14 @@
 import React from 'react';
 
-function Cart () {
+
+function CartPage () {
     
         return (
             <div>
-               Cart
+               CartPage
             </div>
         );
     
 }
 
-export default Cart;
+export default CartPage;
