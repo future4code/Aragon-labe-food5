@@ -7,6 +7,7 @@ import { BASE_URL } from '../constants/urls';
 import { goToLoginPage } from '../routes/coordinator';
 import CardItem from './CardItem';
 
+
 function DetailsPage() {
     const [restaurantDetails, setRestaurantDetails] = useState({})
     const navigate = useNavigate()
@@ -25,6 +26,14 @@ function DetailsPage() {
                 console.log(response.data)
             setRestaurantDetails(response.data)
        
+
+    const getRestaurantDetail = async () => {
+        try {
+            const response = await axios
+        .get(`${BASE_URL}/restaurants/${params.restaurantId}`,headers)
+                console.log(response.data.restaurant)
+            setRestaurantDetails(response.data.restaurant)
+
         }catch (error) {
             console.log(error.response.data.message);
             return error.response.data;
@@ -39,6 +48,7 @@ function DetailsPage() {
     }, [])
 
     useEffect(() => {
+
         getRestaurantDetails(params.restaurantId)
         console.log(restaurantDetails)
     }, [])
@@ -53,9 +63,14 @@ function DetailsPage() {
         )
      })
 
+        getRestaurantDetail()
+    }, [])
+
+
     return (
         <div>
             <Header/>
+
             {restaurantDetails.restaurant?.name}
             <RestaurantCard
             key={restaurantDetails.id}
@@ -63,6 +78,14 @@ function DetailsPage() {
             isDetail={true}
             />
             {showProducts}
+
+            <RestaurantCard
+            key={restaurantDetails.id}
+            restaurant={restaurantDetails}
+            isDetail={true}
+            />
+
+
         </div>
     );
 

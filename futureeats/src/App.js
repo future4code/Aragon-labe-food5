@@ -1,6 +1,6 @@
-import './App.css';
 import Router from './routes/Router';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import GlobalState from './global/GlobalState';
 
 const theme = createTheme({
   status: {
@@ -26,7 +26,9 @@ function App() {
   return (
     <div >
       <ThemeProvider theme={theme}>
+        <GlobalState>
       <Router/>
+        </GlobalState>
       </ThemeProvider>
     </div>
   );
