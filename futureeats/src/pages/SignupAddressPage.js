@@ -1,9 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
-import { goToFeedPage, goToLoginPage, goToSignupAddressPage } from '../routes/coordinator';
-import { Button } from '@mui/material';
+import { goToLoginPage } from '../routes/coordinator';
+import { Button, TextField } from '@mui/material';
 import { requestAddress } from '../services/requests';
+import styled from 'styled-components';
 
+const Main = styled.main`
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+margin-top: 15%;
+`
 
 export default function SignupAddressPage() {
 
@@ -22,7 +30,7 @@ export default function SignupAddressPage() {
         setForm({ ...form, [e.target.name]: e.target.value })
     }
 
-    const cadastro = (e) => {
+    const register = (e) => {
         console.log(form)
         e.preventDefault()
         requestAddress(form, navigate)
@@ -38,22 +46,29 @@ export default function SignupAddressPage() {
     return (
         <section>
             {/* <Header  /> */}
-            <main>
+            <Main>
                 <h1>Cadastro de Endereço</h1>
-                <form onSubmit={cadastro}>
-                    <label htmlFor="rua" >Rua:</label>
-                    <input 
+                <form onSubmit={register}>
+                <label htmlFor="rua" ></label>
+                    <TextField 
+                    id="standard-basic" 
+                    label="Rua" 
+                    variant="standard"
                     placeholder='Rua'
                     id="rua" 
                     name="street" 
                     value={form.street} 
                     onChange={onChangeForm} 
-                    required 
+                    required
+                    
                     />
                     <br />
                     <br />
-                    <label htmlFor="numero" >Número:</label>
-                    <input 
+                    <label htmlFor="numero" ></label>
+                    <TextField 
+                    id="standard-basic" 
+                    label="Número" 
+                    variant="standard" 
                     placeholder='Número'
                     id="numero" 
                     name="number" 
@@ -63,8 +78,11 @@ export default function SignupAddressPage() {
                     />
                     <br />
                     <br />
-                    <label htmlFor="complemento" >Complemento:</label>
-                    <input 
+                    <label htmlFor="complemento" ></label>
+                    <TextField 
+                    id="standard-basic" 
+                    label="Complemento" 
+                    variant="standard" 
                     placeholder='Complemento'
                     id="complemento" 
                     name="complement" 
@@ -74,8 +92,11 @@ export default function SignupAddressPage() {
                     />
                     <br />
                     <br />
-                    <label htmlFor="bairro" >Bairro:</label>
-                    <input
+                    <label htmlFor="bairro" ></label>
+                    <TextField 
+                    id="standard-basic" 
+                    label="Bairro" 
+                    variant="standard"
                     placeholder='Bairro'
                     id="bairro" 
                     name="neighbourhood" 
@@ -85,8 +106,11 @@ export default function SignupAddressPage() {
                     />
                     <br />
                     <br />
-                    <label htmlFor="cidade" >Cidade:</label>
-                    <input 
+                    <label htmlFor="cidade" ></label>
+                    <TextField 
+                    id="standard-basic" 
+                    label="Cidade" 
+                    variant="standard" 
                     placeholder='Cidade'
                     id="cidade" 
                     name="city" 
@@ -96,8 +120,11 @@ export default function SignupAddressPage() {
                     />
                     <br />
                     <br />
-                    <label htmlFor="estado" >Estado:</label>
-                    <input 
+                    <label htmlFor="estado" ></label>
+                    <TextField 
+                    id="standard-basic" 
+                    label="Estado" 
+                    variant="standard" 
                     placeholder='Estado'
                     id="estado" 
                     name="state" 
@@ -110,7 +137,7 @@ export default function SignupAddressPage() {
                     <Button type="submit" variant="contained">Cadastrar</Button>
                 </form>
                 <br />
-            </main>
+            </Main>
         </section>
     )
 }
