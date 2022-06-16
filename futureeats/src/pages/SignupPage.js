@@ -29,6 +29,7 @@ import { requestSignup } from "../services/requests";
 
   const register = (e) => {
     e.preventDefault();
+
 	const form = {
 		name:signUp.name,
 		email:signUp.email,
@@ -49,7 +50,6 @@ import { requestSignup } from "../services/requests";
           id="standard-basic" 
           label="Nome" 
           variant="standard"
-          id="name"
           name="name"
           value={signUp.name}
           onChange={onChangeSignUp}
@@ -63,7 +63,6 @@ import { requestSignup } from "../services/requests";
           label="CPF" 
           variant="standard"
           pattern=""
-          id="cpf"
           name="cpf"
           type="number"
           value={signUp.cpf}
@@ -77,7 +76,6 @@ import { requestSignup } from "../services/requests";
           id="standard-basic" 
           label="E-mail" 
           variant="standard"
-          id="email"
           name="email"
           type="email"
           value={signUp.email}
@@ -91,7 +89,6 @@ import { requestSignup } from "../services/requests";
           id="standard-basic" 
           label="Confirme o e-mail" 
           variant="standard"
-          id="emailConfirm"
           name="emailConfirm"
           value={checker.emailConfirm}
           onChange={onChangeChecker}
@@ -104,7 +101,6 @@ import { requestSignup } from "../services/requests";
           id="standard-basic" 
           label="Senha" 
           variant="standard"
-          id="password"
           type="password"
           name="password"
           value={signUp.password}
@@ -117,7 +113,6 @@ import { requestSignup } from "../services/requests";
           id="standard-basic" 
           label="Confirme a Senha" 
           variant="standard"
-          id="passwordConfirm"
           type="password"
           name="passwordConfirm"
           value={checker.passwordConfirm}

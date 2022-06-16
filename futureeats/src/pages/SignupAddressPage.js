@@ -55,7 +55,6 @@ export default function SignupAddressPage() {
                     label="Rua" 
                     variant="standard"
                     placeholder='Rua'
-                    id="rua" 
                     name="street" 
                     value={form.street} 
                     onChange={onChangeForm} 
@@ -70,7 +69,6 @@ export default function SignupAddressPage() {
                     label="Número" 
                     variant="standard" 
                     placeholder='Número'
-                    id="numero" 
                     name="number" 
                     value={form.number} 
                     onChange={onChangeForm} 
@@ -84,7 +82,6 @@ export default function SignupAddressPage() {
                     label="Complemento" 
                     variant="standard" 
                     placeholder='Complemento'
-                    id="complemento" 
                     name="complement" 
                     value={form.complement} 
                     onChange={onChangeForm} 
@@ -98,7 +95,6 @@ export default function SignupAddressPage() {
                     label="Bairro" 
                     variant="standard"
                     placeholder='Bairro'
-                    id="bairro" 
                     name="neighbourhood" 
                     value={form.neighbourhood} 
                     onChange={onChangeForm} 
@@ -112,7 +108,6 @@ export default function SignupAddressPage() {
                     label="Cidade" 
                     variant="standard" 
                     placeholder='Cidade'
-                    id="cidade" 
                     name="city" 
                     value={form.city} 
                     onChange={onChangeForm} 
@@ -126,7 +121,6 @@ export default function SignupAddressPage() {
                     label="Estado" 
                     variant="standard" 
                     placeholder='Estado'
-                    id="estado" 
                     name="state" 
                     value={form.state} 
                     onChange={onChangeForm} 

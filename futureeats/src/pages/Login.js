@@ -42,7 +42,6 @@ export default function Login () {
                     id="standard-basic" 
                     label="Senha" 
                     variant="standard" 
-                    id="senha" 
                     name="password" 
                     value={form.password} 
                     type="password" 

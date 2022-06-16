@@ -9,30 +9,27 @@ import CardItem from './CardItem';
 
 
 function DetailsPage() {
+    
     const [restaurantDetails, setRestaurantDetails] = useState({})
+
     const navigate = useNavigate()
+
     const params = useParams()
+
     const token = localStorage.getItem("token-labefood")
     const headers = {
         headers: {
             auth: token
         }
     }
-    const getRestaurantDetails = async (restaurantId) => {
-        
+
+
+    const getRestaurantDetail = async (restaurantId) => {
         try {
             const response = await axios
-        .get(`${BASE_URL}/restaurants/${restaurantId}`, headers)
+        .get(`${BASE_URL}/restaurants/${restaurantId}`,headers)
                 console.log(response.data)
             setRestaurantDetails(response.data)
-       
-
-    const getRestaurantDetail = async () => {
-        try {
-            const response = await axios
-        .get(`${BASE_URL}/restaurants/${params.restaurantId}`,headers)
-                console.log(response.data.restaurant)
-            setRestaurantDetails(response.data.restaurant)
 
         }catch (error) {
             console.log(error.response.data.message);
@@ -49,42 +46,31 @@ function DetailsPage() {
 
     useEffect(() => {
 
-        getRestaurantDetails(params.restaurantId)
+        getRestaurantDetail(params.restaurantId)
         console.log(restaurantDetails)
     }, [])
 
     const showProducts = restaurantDetails.restaurant &&
      restaurantDetails.restaurant.products.map((product)=> {
+        
         return (
             <CardItem
-            key={product.restaurantId}
+            key={product.id}
             product={product}
             />
         )
      })
 
-        getRestaurantDetail()
-    }, [])
-
-
     return (
         <div>
             <Header/>
 
-            {restaurantDetails.restaurant?.name}
             <RestaurantCard
-            key={restaurantDetails.id}
+            key={restaurantDetails.restaurant?.id}
             restaurant={restaurantDetails.restaurant}
             isDetail={true}
             />
             {showProducts}
-
-            <RestaurantCard
-            key={restaurantDetails.id}
-            restaurant={restaurantDetails}
-            isDetail={true}
-            />
-
 
         </div>
     );

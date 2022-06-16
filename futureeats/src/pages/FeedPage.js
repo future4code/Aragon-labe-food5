@@ -51,6 +51,7 @@ function FeedPage() {
 
     const showRestaurants = restaurants? restaurants
     .filter((restaurant)=> {
+
         const textFind = find.toLowerCase()
         const restaurantsFiltered = restaurant.name.toLowerCase()
         const restaurantsDescriptionFiltered = restaurant.description.toLowerCase()
@@ -70,6 +71,7 @@ function FeedPage() {
     return (
         <main>
             <Header />
+            
             <Button onClick={logout} >Sair</Button>
             <input 
             value={find} 
