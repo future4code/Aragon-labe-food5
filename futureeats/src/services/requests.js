@@ -3,11 +3,10 @@ import { BASE_URL } from "../constants/urls"
 import { goToFeedPage, goToSignupAddressPage } from "../routes/coordinator"
 
 
-export const requestCadastro = (form, navigate) => {
+export const requestSignup = (form, navigate) => {
   axios.post(`${BASE_URL}/signup`, form)
     .then((res) => {
       alert("Cadastrado com sucesso")
-
       window.localStorage.setItem("token-labefood", res.data.token)
       goToSignupAddressPage(navigate)
     })
@@ -16,7 +15,6 @@ export const requestCadastro = (form, navigate) => {
       console.log(err)
     })
 }
-
 export const requestAddress = (form, navigate) => {
   console.log(form)
   axios
@@ -34,12 +32,10 @@ export const requestAddress = (form, navigate) => {
       console.log(error.data)
     })
 }
-
 export const requestLogin = (form, navigate) => {
   axios.post(`${BASE_URL}/login`, form)
     .then((res) => {
       alert("Logado")
-
       window.localStorage.setItem("token-labefood", res.data.token)
       goToFeedPage(navigate)
     })
@@ -48,13 +44,10 @@ export const requestLogin = (form, navigate) => {
       console.log(err)
     })
 }
-
-
-
 export const getRestaurantDetail = async (restaurantId) => {
   const header = {
     headers: {
-      auth: JSON.parse(localStorage.getItem("labefood")).token,
+      auth: (localStorage.getItem("labefood")).token,
     },
   };
   try {
