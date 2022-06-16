@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Cadastro from '../pages/Signup';
-import Carrinho from '../pages/Cart';
+import Carrinho from '../pages/CardItem';
 import DetalhesPage from '../pages/DetailsPage';
 import FeedPage from '../pages/FeedPage';
 import Login from '../pages/Login';
