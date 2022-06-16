@@ -1,7 +1,8 @@
-export const adjustPrice = price => {
+export const adjustPrice = (price) => {
 
-  price.toLocaleString('pt-BR', {
+  const newPrice = price.toLocaleString('pt-BR', {
       style: 'currency',
       currency: 'BRL',
     })
+    return newPrice
   }

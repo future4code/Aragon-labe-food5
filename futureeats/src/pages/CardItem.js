@@ -1,4 +1,3 @@
-import React from 'react';
 import { adjustPrice } from '../utils/adjustPrice';
 
 function CardItem (props) {

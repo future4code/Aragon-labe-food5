@@ -25,7 +25,7 @@ function RestaurantCard(props) {
         <>
             <section 
             key={props.restaurant?.restaurantId}
-            onClick={() => goToDetailsPage(navigate, props.restaurant?.restaurantId)}
+            onClick={() => goToDetailsPage(navigate, props.restaurant?.id)}
             >
 
                 <hr />
@@ -42,25 +42,6 @@ function RestaurantCard(props) {
     )
 }
 
-
-
-
-        <Main>
-            <section key={props.restaurant.restaurantId}>
-                <button onClick={() => goToDetailsPage(navigate, props.restaurant.restaurantId)} >
-                <img src={props.restaurant.logoUrl} alt="name"/></button>
-                <h2 >{props.restaurant.name}</h2>
-                <h2>{props.restaurant.address}</h2>
-                <h2>{props.restaurant.deliveryTime - 10}
-                    {" - "}
-                    {props.restaurant.deliveryTime + 10}
-                    {" min"}</h2>
-                <h2>{props.restaurant.category}</h2>
-                <h2>Frete R$ {props.restaurant.shipping},00 </h2>
-            </section>
-        </Main>
-    )
-}
-
+        
 export default RestaurantCard;
 
