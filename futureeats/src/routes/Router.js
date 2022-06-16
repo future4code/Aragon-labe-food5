@@ -13,6 +13,7 @@ function Router () {
         return (
             <BrowserRouter>
             <Routes>
+
                 <Route index element={<ScreenPage/>}/>
                 <Route path="/login" element={<Login/>}/>
                 <Route path="/signup/address" element={<SignupAddressPage/>}/>
@@ -20,6 +21,7 @@ function Router () {
                 <Route path="/profile" element={<Perfil/>}/>
                 <Route path="/restaurants/:restaurantId" element={<DetalhesPage/>}/>
                 <Route path="/feedPage" element={<FeedPage/>}/>
+                
             </Routes>
             </BrowserRouter>
         );
