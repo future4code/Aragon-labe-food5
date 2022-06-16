@@ -5,6 +5,8 @@ import Header from '../components/Header';
 import RestaurantCard from '../components/RestaurantCard';
 import { BASE_URL } from '../constants/urls';
 import { goToLoginPage } from '../routes/coordinator';
+import CardItem from './CardItem';
+
 
 function DetailsPage() {
     const [restaurantDetails, setRestaurantDetails] = useState({})
@@ -16,6 +18,15 @@ function DetailsPage() {
             auth: token
         }
     }
+    const getRestaurantDetails = async (restaurantId) => {
+        
+        try {
+            const response = await axios
+        .get(`${BASE_URL}/restaurants/${restaurantId}`, headers)
+                console.log(response.data)
+            setRestaurantDetails(response.data)
+       
+
     const getRestaurantDetail = async () => {
         try {
             const response = await axios
@@ -37,6 +48,21 @@ function DetailsPage() {
     }, [])
 
     useEffect(() => {
+
+        getRestaurantDetails(params.restaurantId)
+        console.log(restaurantDetails)
+    }, [])
+
+    const showProducts = restaurantDetails.restaurant &&
+     restaurantDetails.restaurant.products.map((product)=> {
+        return (
+            <CardItem
+            key={product.restaurantId}
+            product={product}
+            />
+        )
+     })
+
         getRestaurantDetail()
     }, [])
 
@@ -44,11 +70,21 @@ function DetailsPage() {
     return (
         <div>
             <Header/>
+
+            {restaurantDetails.restaurant?.name}
+            <RestaurantCard
+            key={restaurantDetails.id}
+            restaurant={restaurantDetails.restaurant}
+            isDetail={true}
+            />
+            {showProducts}
+
             <RestaurantCard
             key={restaurantDetails.id}
             restaurant={restaurantDetails}
             isDetail={true}
             />
+
 
         </div>
     );
