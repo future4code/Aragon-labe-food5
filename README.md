@@ -3,7 +3,7 @@
 ## Participantes:
 
 - @juliasbz
-- @
+- @JorgeFVS
 - @
 - @Willian
 
