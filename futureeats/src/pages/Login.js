@@ -1,9 +1,40 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
-import Header from '../components/Header';
 import { goToFeedPage, goToSignup } from '../routes/coordinator';
 import { requestLogin } from '../services/requests';
-import { Button, TextField } from '@mui/material';
+import { Button, TextField} from '@mui/material';
+import logoLogin from '../img/logoLogin.png';
+import styled from "styled-components";
+
+const Screencontainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    margin-top: 12vh;
+`
+
+const LogoImage = styled.img`
+    width: 110px;
+    height: 60px;
+`
+
+const InputsContainer = styled.form`
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    width: 100vw;
+    max-width: 450px;
+	padding: 1%;
+
+    button{
+        text-transform: capitalize;
+        font-size: 16px;
+    }
+`
+
 export default function Login () {
 	const [form, setForm] = useState({
 		email: "",
@@ -24,36 +55,35 @@ export default function Login () {
        		}
  	}, [])
 	return (
-		<section>
-			<Header  />
-			<main>
-				<h1>Login</h1>
-				<form onSubmit={login}>
+		<Screencontainer>
+			<LogoImage src={logoLogin} alt={"Imagem da logo"} />
+				<InputsContainer onSubmit={login}>
                     <TextField
-                    id="standard-basic" 
-                    label="E-mail" 
-                    variant="standard" 
+                    id="outlined-basic" 
+                    label="E-mail"
+                    variant="outlined" 
                     name="email" 
                     value={form.email} 
                     onChange={onChangeForm} 
-                    required/>
-                    <br />
+                    required
+					fullWidth
+					/>
+
                     <TextField 
-                    id="standard-basic" 
+                    id="outlined-basic" 
                     label="Senha" 
-                    variant="standard" 
+                    variant="outlined" 
                     name="password" 
                     value={form.password} 
-                    type="password" 
-                    required 
-                    onChange={onChangeForm} />
-					<br />
-					<Button type="submit" variant="contained">Entrar</Button>
-				</form>
-				<br/>
-				<Button onClick={() => goToSignup(navigate)} variant="contained">Cadastrar</Button>
-				{/* <TextField id="outlined-basic" label="Outlined" variant="outlined" /> */}
-			</main>
-		</section>
+                    type="password"  
+                    onChange={onChangeForm}
+					required
+					fullWidth
+					/>
+
+					<Button variant="contained" type="submit" fullWidth>Entrar</Button>
+					<Button variant="contained" fullWidth onClick={() => goToSignup(navigate)}>Cadastrar</Button>
+				</InputsContainer>
+		</Screencontainer>
 	)
 }

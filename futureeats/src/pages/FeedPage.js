@@ -1,11 +1,35 @@
-import { Button } from '@mui/material';
+import { Button, TextField } from '@mui/material';
 import { goToDetailsPage, goToLoginPage } from '../routes/coordinator';
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import { BASE_URL } from '../constants/urls';
 import axios from "axios"
-import Header from '../components/Header';
 import RestaurantCard from '../components/RestaurantCard';
+import styled from "styled-components";
+
+const Screencontainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    margin-top: 12vh;
+`
+
+const InputsContainer = styled.form`
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    width: 100vw;
+    max-width: 450px;
+	padding: 1%;
+
+    button{
+        text-transform: capitalize;
+        font-size: 16px;
+    }
+`
 
 function FeedPage() {
 
@@ -69,19 +93,21 @@ function FeedPage() {
 
 
     return (
-        <main>
-            <Header />
-            
-            <Button onClick={logout} >Sair</Button>
-            <input 
-            value={find} 
-            onChange={onChangeFind} 
-            placeholder='Buscar Restaurante'
-            />
-            {showRestaurants}
-
-            {/* <Footer/> */}
-        </main>
+        <Screencontainer>
+            <InputsContainer>
+                <TextField
+                id="outlined-basic" 
+                label="Buscar" 
+                variant="outlined"
+                value={find} 
+                onChange={onChangeFind}
+                fullWidth
+                />
+                {showRestaurants}
+                <Button variant="contained" fullWidth onClick={logout} >Sair</Button>
+                {/* <Footer/> */}
+            </InputsContainer>
+        </Screencontainer>
     );
 }
 
