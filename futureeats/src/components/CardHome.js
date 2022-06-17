@@ -1,9 +1,9 @@
 
 
 
-function CardHome (props) {
+function CardHome(props) {
     const navigate = useNavigate()
-    return(
+    return (
         <main>
             <button onClick={() => goToRestaurant(navigate, props.restaurante.id)}>
                 <img src={props.restaurante.logoUrl} />

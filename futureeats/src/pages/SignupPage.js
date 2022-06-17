@@ -36,9 +36,9 @@ const InputsContainer = styled.form`
     }
 `
 
- function SignupPage () {
+function SignupPage() {
 
-	const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const context = useContext(GlobalStateContext);
 
@@ -59,95 +59,95 @@ const InputsContainer = styled.form`
   const register = (e) => {
     e.preventDefault();
 
-	const form = {
-		name:signUp.name,
-		email:signUp.email,
-		cpf:signUp.cpf,
-		password:signUp.password
-	}
-    requestSignup(form,navigate)
+    const form = {
+      name: signUp.name,
+      email: signUp.email,
+      cpf: signUp.cpf,
+      password: signUp.password
+    }
+    requestSignup(form, navigate)
   };
 
   return (
     <Screencontainer>
-			<LogoImage src={logoLogin} alt={"Imagem da logo"} />
-				<InputsContainer onSubmit={register}>
+      <LogoImage src={logoLogin} alt={"Imagem da logo"} />
+      <InputsContainer onSubmit={register}>
         <label htmlFor="name"></label>
-          <TextField 
-            id="outlined-basic" 
-            label="Nome" 
-            variant="outlined"
-            name="name"
-            value={signUp.name}
-            onChange={onChangeSignUp}
-            required
-            fullWidth
-          />
+        <TextField
+          id="outlined-basic"
+          label="Nome"
+          variant="outlined"
+          name="name"
+          value={signUp.name}
+          onChange={onChangeSignUp}
+          required
+          fullWidth
+        />
 
-          <label htmlFor="cpf"></label>
-          <TextField 
-            id="outlined-basic" 
-            label="CPF" 
-            variant="outlined"
-            pattern=""
-            name="cpf"
-            type="number"
-            value={signUp.cpf}
-            onChange={onChangeSignUp}
-            required
-            fullWidth
-          />
+        <label htmlFor="cpf"></label>
+        <TextField
+          id="outlined-basic"
+          label="CPF"
+          variant="outlined"
+          pattern=""
+          name="cpf"
+          type="number"
+          value={signUp.cpf}
+          onChange={onChangeSignUp}
+          required
+          fullWidth
+        />
 
-          <label htmlFor="email"></label>
-          <TextField 
-            id="outlined-basic" 
-            label="E-mail" 
-            variant="outlined"
-            name="email"
-            type="email"
-            value={signUp.email}
-            onChange={onChangeSignUp}
-            required
-            fullWidth
-          />
+        <label htmlFor="email"></label>
+        <TextField
+          id="outlined-basic"
+          label="E-mail"
+          variant="outlined"
+          name="email"
+          type="email"
+          value={signUp.email}
+          onChange={onChangeSignUp}
+          required
+          fullWidth
+        />
 
-          <label htmlFor="emailConfirm"></label>
-          <TextField 
-            id="outlined-basic" 
-            label="Confirme o e-mail" 
-            variant="outlined"
-            name="emailConfirm"
-            value={checker.emailConfirm}
-            onChange={onChangeChecker}
-            required
-            fullWidth
-          />
+        <label htmlFor="emailConfirm"></label>
+        <TextField
+          id="outlined-basic"
+          label="Confirme o e-mail"
+          variant="outlined"
+          name="emailConfirm"
+          value={checker.emailConfirm}
+          onChange={onChangeChecker}
+          required
+          fullWidth
+        />
 
-          <label htmlFor="password"></label>
-          <TextField 
-            id="outlined-basic" 
-            label="Senha" 
-            variant="outlined"
-            type="password"
-            name="password"
-            value={signUp.password}
-            onChange={onChangeSignUp}
-            required
-            fullWidth
-          />
+        <label htmlFor="password"></label>
+        <TextField
+          id="outlined-basic"
+          label="Senha"
+          variant="outlined"
+          type="password"
+          name="password"
+          value={signUp.password}
+          onChange={onChangeSignUp}
+          required
+          fullWidth
+        />
 
-          <label htmlFor="passwordConfirm"></label>
-          <TextField
-            id="outlined-basic" 
-            label="Confirme a Senha" 
-            variant="outlined"
-            type="password"
-            name="passwordConfirm"
-            value={checker.passwordConfirm}
-            onChange={onChangeChecker}
-            required
-            fullWidth
-          />
+        <label htmlFor="passwordConfirm"></label>
+        <TextField
+          id="outlined-basic"
+          label="Confirme a Senha"
+          variant="outlined"
+          type="password"
+          name="passwordConfirm"
+          value={checker.passwordConfirm}
+          onChange={onChangeChecker}
+          required
+          fullWidth
+        />
         <Button variant="contained" fullWidth type="submit">Cadastrar</Button>
       </InputsContainer>
     </Screencontainer>

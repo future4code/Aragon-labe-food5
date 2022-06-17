@@ -7,6 +7,7 @@ import { goToLoginPage, goToFeedPage } from '../routes/coordinator';
 import CardItem from './CardItem';
 import { Button } from '@mui/material';
 import styled from "styled-components";
+import Footer from "../components/Footer"
 
 const Screencontainer = styled.div`
     display: flex;
@@ -85,6 +86,7 @@ function DetailsPage() {
                 />
                 {showProducts}
                 <Button variant="contained" fullWidth onClick={() => goToFeedPage(navigate)}>Voltar</Button>
+                <Footer/>
             </main>
         </Screencontainer>
     );

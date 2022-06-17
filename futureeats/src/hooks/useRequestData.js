@@ -9,11 +9,11 @@ const useRequestData = (initialData, path) => {
     const config = {
         method: 'get',
         url: BASE_URL + path,
-        headers: { 'auth': localStorage.getItem('token') },
+        headers: { 'auth': localStorage.getItem('token-labefood') },
     }
 
     useEffect(() => {
-        if (localStorage.getItem('token')) {
+        if (localStorage.getItem('token-labefood')) {
             axios(config)
                 .then((res) => {                    
                     setData(res.data)

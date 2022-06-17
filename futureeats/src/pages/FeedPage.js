@@ -6,6 +6,7 @@ import { BASE_URL } from '../constants/urls';
 import axios from "axios"
 import RestaurantCard from '../components/RestaurantCard';
 import styled from "styled-components";
+import Footer from '../components/Footer';
 
 const Screencontainer = styled.div`
     display: flex;
@@ -37,19 +38,21 @@ function FeedPage() {
 
     const [restaurants, setRestaurants] = useState([])
 
-    const [find,setFind] = useState("")
+    const [find, setFind] = useState("")
 
 
     const logout = () => {
         window.localStorage.removeItem("token-labefood")
         goToLoginPage(navigate)
     }
+
     useEffect(() => {
         const token = window.localStorage.getItem("token-labefood")
         if (!token) {
             goToLoginPage(navigate)
         }
     }, [])
+
     useEffect(() => {
         getRestaurants()
     }, [])
@@ -73,40 +76,41 @@ function FeedPage() {
     };
 
 
-    const showRestaurants = restaurants? restaurants
-    .filter((restaurant)=> {
+    const showRestaurants = restaurants ? restaurants
+        .filter((restaurant) => {
 
-        const textFind = find.toLowerCase()
-        const restaurantsFiltered = restaurant.name.toLowerCase()
-        const restaurantsDescriptionFiltered = restaurant.description.toLowerCase()
-        return restaurantsFiltered.includes(textFind) || 
-        restaurantsDescriptionFiltered.includes(textFind)
-    })
-    .map((restaurant) => {
-        return(
-            <RestaurantCard
-            key={restaurant.restaurantId}
-            restaurant={restaurant}
-            />
-        )
-    }):<p>Carregando...</p>
+            const textFind = find.toLowerCase()
+            const restaurantsFiltered = restaurant.name.toLowerCase()
+            const restaurantsDescriptionFiltered = restaurant.description.toLowerCase()
+            return restaurantsFiltered.includes(textFind) ||
+                restaurantsDescriptionFiltered.includes(textFind)
+        })
+        .map((restaurant) => {
+            return (
+                <RestaurantCard
+                    key={restaurant.restaurantId}
+                    restaurant={restaurant}
+                />
+            )
+        }) : <p>Carregando...</p>
 
 
     return (
         <Screencontainer>
             <InputsContainer>
                 <TextField
-                id="outlined-basic" 
-                label="Buscar" 
-                variant="outlined"
-                value={find} 
-                onChange={onChangeFind}
-                fullWidth
+                    id="outlined-basic"
+                    label="Buscar"
+                    variant="outlined"
+                    value={find}
+                    onChange={onChangeFind}
+                    fullWidth
                 />
                 {showRestaurants}
                 <Button variant="contained" fullWidth onClick={logout} >Sair</Button>
-                {/* <Footer/> */}
+                <Footer/>
             </InputsContainer>
+
         </Screencontainer>
     );
 }
