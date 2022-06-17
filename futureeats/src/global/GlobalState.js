@@ -6,6 +6,13 @@ import  GlobalStateContext  from "./GlobalStateContext";
 
 function GlobalState(props) {
 
+    const [cart, setCart] = useState([])
+    const [cartId, setCartId] = useState([])
+    const [shipping, setShipping] = useState([])
+    const [shippingId, setShippingId] = useState([])
+    const [isActiveOrder, setIsActiveOrder] = useState(false)
+    
+    console.log(cart)
     const [login, setLogin] = useState({ email: "", password: "" });
 
     const [signUp, setSignUp] = useState({
@@ -28,22 +35,7 @@ function GlobalState(props) {
 
     const [restaurants, setRestaurants] = useState([])
 
-    const states = {
-        login: login,
-        signUp: signUp,
-        checker: checker,
-        address: address,
-        profile: profile,
-        restaurants: restaurants
-    };
-
-    const setters = {
-        setLogin: setLogin,
-        setSignUp: setSignUp,
-        setChecker: setChecker,
-        setAddress: setAddress,
-        setRestaurants: setRestaurants
-    };
+   
 
     const token = localStorage.getItem("token-labefood")
 
@@ -53,31 +45,22 @@ function GlobalState(props) {
         }
     }
 
-    const postLogin = () => {
-        axios
-            .post(`${BASE_URL}/login`, login)
-            .then((res) => {
-                console.log(res.data);
-                localStorage.setItem("token-labefood", res.data.token);
-            })
-            .catch((err) => {
-                alert("Usuário ou senha inválidos");
-                console.log(err.response.data.message);
-            });
-    };
+    const getActiveOrder = async () => {
+        try {
+            const response = await axios
+            .get(`${BASE_URL}/active-order`,headers)
+            console.log(response.data)
+            setIsActiveOrder(response.data)
+        }catch (error){
+            console.log(error.response.data.message)
+            return error.response.data
+        }
 
-    const postSignUp = () => {
-        axios
-            .post(`${BASE_URL}/signup`, signUp)
-            .then((res) => {
-                alert("Cadastro realizado com sucesso!")
-                localStorage.setItem("token-labefood", res.data.token)
-            })
-            .catch((err) => {
-                alert("Dados inválidos");
-                console.log(err.response.data.message);
-            });
-    };
+    }
+       
+    const addCart = (product)=> {
+        setCart([...cart,product])
+    }
 
     const addAddress = () => {
         axios.put(`${BASE_URL}/address`, address, headers)
@@ -89,10 +72,6 @@ function GlobalState(props) {
             })
     }
 
-    const posts = {
-        postLogin: postLogin,
-        postSignUp: postSignUp,
-    };
     const puts = {
         addAddress: addAddress
     }
@@ -122,10 +101,32 @@ function GlobalState(props) {
 
     const getters = {
         getProfile: getProfile,
-        getRestaurants: getRestaurants
+        getRestaurants: getRestaurants,
+        getActiveOrder:getActiveOrder
     }
 
-    const context = { states, setters, posts, puts, getters };
+    
+
+    const states = {
+        login: login,
+        signUp: signUp,
+        checker: checker,
+        address: address,
+        profile: profile,
+        restaurants: restaurants,
+        cart:cart
+    };
+
+    const setters = {
+        setLogin: setLogin,
+        setSignUp: setSignUp,
+        setChecker: setChecker,
+        setAddress: setAddress,
+        setRestaurants: setRestaurants,
+        addCart: addCart
+    };
+
+    const context = { states, setters, puts, getters};
 
     return (
         <GlobalStateContext.Provider value={context}>

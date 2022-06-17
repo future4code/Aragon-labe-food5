@@ -1,13 +1,13 @@
 import React from 'react';
 
-function Header () {
+function Header() {
 
-        return (
-            <div>
-                <h1>Future Eats</h1>
-            </div>
-        );
-    
+    return (
+        <div>
+            <h1>Future Eats</h1>
+        </div>
+    );
+
 }
 
 export default Header;

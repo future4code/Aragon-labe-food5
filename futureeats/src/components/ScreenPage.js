@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Grow, Container } from '@mui/material'
 import { goToLoginPage } from '../routes/coordinator';
 import logo from "../img/logo.png"

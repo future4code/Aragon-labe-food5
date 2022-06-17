@@ -68,86 +68,86 @@ export default function SignupAddressPage() {
     return (
         <Screencontainer>
             <LogoImage src={logoLogin} alt={"Imagem da logo"} />
-				<InputsContainer onSubmit={register}>
+            <InputsContainer onSubmit={register}>
                 <label htmlFor="rua" ></label>
-                    <TextField 
-                    id="outlined-basic" 
-                    label="Rua" 
+                <TextField
+                    id="outlined-basic"
+                    label="Rua"
                     variant="outlined"
                     placeholder='Rua'
-                    name="street" 
-                    value={form.street} 
-                    onChange={onChangeForm} 
+                    name="street"
+                    value={form.street}
+                    onChange={onChangeForm}
                     required
                     fullWidth
-                    />
+                />
 
-                    <label htmlFor="numero" ></label>
-                    <TextField 
-                    id="outlined-basic" 
-                    label="Número" 
-                    variant="outlined" 
+                <label htmlFor="numero" ></label>
+                <TextField
+                    id="outlined-basic"
+                    label="Número"
+                    variant="outlined"
                     placeholder='Número'
-                    name="number" 
-                    value={form.number} 
-                    onChange={onChangeForm} 
-                    required 
+                    name="number"
+                    value={form.number}
+                    onChange={onChangeForm}
+                    required
                     fullWidth
-                    />
+                />
 
-                    <label htmlFor="complemento" ></label>
-                    <TextField 
-                    id="outlined-basic" 
-                    label="Complemento" 
-                    variant="outlined" 
+                <label htmlFor="complemento" ></label>
+                <TextField
+                    id="outlined-basic"
+                    label="Complemento"
+                    variant="outlined"
                     placeholder='Complemento'
-                    name="complement" 
-                    value={form.complement} 
-                    onChange={onChangeForm} 
-                    required 
+                    name="complement"
+                    value={form.complement}
+                    onChange={onChangeForm}
+                    required
                     fullWidth
-                    />
+                />
 
-                    <label htmlFor="bairro" ></label>
-                    <TextField 
-                    id="outlined-basic" 
-                    label="Bairro" 
+                <label htmlFor="bairro" ></label>
+                <TextField
+                    id="outlined-basic"
+                    label="Bairro"
                     variant="outlined"
                     placeholder='Bairro'
-                    name="neighbourhood" 
-                    value={form.neighbourhood} 
-                    onChange={onChangeForm} 
-                    required 
+                    name="neighbourhood"
+                    value={form.neighbourhood}
+                    onChange={onChangeForm}
+                    required
                     fullWidth
-                    />
-                    
-                    <label htmlFor="cidade" ></label>
-                    <TextField 
-                    id="outlined-basic" 
-                    label="Cidade" 
-                    variant="outlined" 
-                    placeholder='Cidade'
-                    name="city" 
-                    value={form.city} 
-                    onChange={onChangeForm} 
-                    required 
-                    fullWidth
-                    />
+                />
 
-                    <label htmlFor="estado" ></label>
-                    <TextField 
-                    id="outlined-basic" 
-                    label="Estado" 
-                    variant="outlined" 
-                    placeholder='Estado'
-                    name="state" 
-                    value={form.state} 
-                    onChange={onChangeForm} 
-                    required 
+                <label htmlFor="cidade" ></label>
+                <TextField
+                    id="outlined-basic"
+                    label="Cidade"
+                    variant="outlined"
+                    placeholder='Cidade'
+                    name="city"
+                    value={form.city}
+                    onChange={onChangeForm}
+                    required
                     fullWidth
-                    />
-                    <Button variant="contained" fullWidth type="submit">Cadastrar</Button>
+                />
+
+                <label htmlFor="estado" ></label>
+                <TextField
+                    id="outlined-basic"
+                    label="Estado"
+                    variant="outlined"
+                    placeholder='Estado'
+                    name="state"
+                    value={form.state}
+                    onChange={onChangeForm}
+                    required
+                    fullWidth
+                />
+                <Button variant="contained" fullWidth type="submit">Cadastrar</Button>
             </InputsContainer>
         </Screencontainer>
-  );
+    );
 }

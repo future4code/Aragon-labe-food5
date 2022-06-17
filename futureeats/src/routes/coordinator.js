@@ -24,3 +24,19 @@ export const goToSignupAddressPage = (navigate) => {
 export const goBack = (navigate) => {
     navigate(-1)
 }
+
+export const goToCartPage = (navigate) => {
+    navigate("/cart")
+}
+
+export const goToProfile = (navigate) => {
+    navigate("/profile")
+}
+
+export const goToEditProfile = (navigate) => {
+    navigate("/")
+}
+
+// export const goToEditAddress = (navigate)=> {
+//     navigate("")
+// }
