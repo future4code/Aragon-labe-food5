@@ -3,14 +3,36 @@ import { useNavigate } from "react-router-dom";
 import { goToLoginPage } from '../routes/coordinator';
 import { Button, TextField } from '@mui/material';
 import { requestAddress } from '../services/requests';
-import styled from 'styled-components';
+import logoLogin from '../img/logoLogin.png';
+import styled from "styled-components";
 
-const Main = styled.main`
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-margin-top: 15%;
+const Screencontainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    margin-top: 12vh;
+`
+
+const LogoImage = styled.img`
+    width: 110px;
+    height: 60px;
+`
+
+const InputsContainer = styled.form`
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    width: 100vw;
+    max-width: 450px;
+	padding: 1%;
+
+    button{
+        text-transform: capitalize;
+        font-size: 16px;
+    }
 `
 
 export default function SignupAddressPage() {
@@ -44,94 +66,88 @@ export default function SignupAddressPage() {
     }, [])
 
     return (
-        <section>
-            {/* <Header  /> */}
-            <Main>
-                <h1>Cadastro de Endereço</h1>
-                <form onSubmit={register}>
+        <Screencontainer>
+            <LogoImage src={logoLogin} alt={"Imagem da logo"} />
+				<InputsContainer onSubmit={register}>
                 <label htmlFor="rua" ></label>
                     <TextField 
-                    id="standard-basic" 
+                    id="outlined-basic" 
                     label="Rua" 
-                    variant="standard"
+                    variant="outlined"
                     placeholder='Rua'
                     name="street" 
                     value={form.street} 
                     onChange={onChangeForm} 
                     required
-                    
+                    fullWidth
                     />
-                    <br />
-                    <br />
+
                     <label htmlFor="numero" ></label>
                     <TextField 
-                    id="standard-basic" 
+                    id="outlined-basic" 
                     label="Número" 
-                    variant="standard" 
+                    variant="outlined" 
                     placeholder='Número'
                     name="number" 
                     value={form.number} 
                     onChange={onChangeForm} 
                     required 
+                    fullWidth
                     />
-                    <br />
-                    <br />
+
                     <label htmlFor="complemento" ></label>
                     <TextField 
-                    id="standard-basic" 
+                    id="outlined-basic" 
                     label="Complemento" 
-                    variant="standard" 
+                    variant="outlined" 
                     placeholder='Complemento'
                     name="complement" 
                     value={form.complement} 
                     onChange={onChangeForm} 
                     required 
+                    fullWidth
                     />
-                    <br />
-                    <br />
+
                     <label htmlFor="bairro" ></label>
                     <TextField 
-                    id="standard-basic" 
+                    id="outlined-basic" 
                     label="Bairro" 
-                    variant="standard"
+                    variant="outlined"
                     placeholder='Bairro'
                     name="neighbourhood" 
                     value={form.neighbourhood} 
                     onChange={onChangeForm} 
                     required 
+                    fullWidth
                     />
-                    <br />
-                    <br />
+                    
                     <label htmlFor="cidade" ></label>
                     <TextField 
-                    id="standard-basic" 
+                    id="outlined-basic" 
                     label="Cidade" 
-                    variant="standard" 
+                    variant="outlined" 
                     placeholder='Cidade'
                     name="city" 
                     value={form.city} 
                     onChange={onChangeForm} 
                     required 
+                    fullWidth
                     />
-                    <br />
-                    <br />
+
                     <label htmlFor="estado" ></label>
                     <TextField 
-                    id="standard-basic" 
+                    id="outlined-basic" 
                     label="Estado" 
-                    variant="standard" 
+                    variant="outlined" 
                     placeholder='Estado'
                     name="state" 
                     value={form.state} 
                     onChange={onChangeForm} 
                     required 
+                    fullWidth
                     />
-                    <br />
-                    <br />
-                    <Button type="submit" variant="contained">Cadastrar</Button>
-                </form>
-                <br />
-            </Main>
-        </section>
-    )
+                    <Button variant="contained" fullWidth type="submit">Cadastrar</Button>
+            </InputsContainer>
+        </Screencontainer>
+  );
 }
