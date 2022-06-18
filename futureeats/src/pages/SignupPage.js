@@ -46,7 +46,6 @@ function SignupPage() {
 
   const { setSignUp, setChecker } = context.setters;
 
-  const { postSignUp } = context.posts;
 
   const onChangeSignUp = (e) => {
     setSignUp({ ...signUp, [e.target.name]: e.target.value });
