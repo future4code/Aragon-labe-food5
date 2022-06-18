@@ -33,7 +33,7 @@ function RestaurantCard(props) {
                 <hr />
                 <button  >
 
-                    <img width={"50px"} src={props.restaurant?.logoUrl} alt={`logo do restaurante ${props.restaurant?.name}`} /></button>
+                    <img width={"200px"} src={props.restaurant?.logoUrl} alt={`logo do restaurante ${props.restaurant?.name}`} /></button>
                 <h2 >{props.restaurant?.name}</h2>
                 {props.isDetail === true && <h2>{props.restaurant?.category}</h2>}
                 <h2>{props.restaurant?.deliveryTime - 10}-

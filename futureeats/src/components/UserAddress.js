@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import useProtectedPage from '../hooks/useProtectedPage';
 import useRequestData from '../hooks/useRequestData';
 import { goToEditProfile } from '../routes/coordinator';
-import logoLogin from "../img/logoLogin.png"
+import EditProfile from "../img/EditProfile.png"
 
 function UserAddress() {
 
@@ -23,7 +23,7 @@ function UserAddress() {
                 ${address.address.neighbourhood},
                 ${address.address.city}-${address.address.state}`}</p>
                 </div>
-                <img src={logoLogin}
+                <img src={EditProfile}
                     alt={"Caneta de editar"}
                     onClick={() => { goToEditProfile(navigate) }} />
             </section> : <p>Carregando...</p>}     
