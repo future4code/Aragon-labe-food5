@@ -4,8 +4,8 @@
 
 - @juliasbz
 - @JorgeFVS
-- @
-- @Willian
+- @ElizCampelo
+- @WillianGilloni
 
 ## Link Surge:
 
@@ -13,12 +13,17 @@
 
 
 ## O que funciona:
-funcionalidade de login e cadastro com acesso de token
 
-renderização dos restaurantes com descrição 
+- Fluxo de login e cadastro de dados pessoais e endereço
 
-renderização de pratos oferecidos pelos restaurantes
+- Renderização dos restaurantes com filtro de busca por restaurante e cards clicáveis para o cardápio
 
-funcionalidade de botões para adicionar carrinho e renderização do carrinho
-renderização do perfil
+- Renderização do cardápio
+
+- Funcionalidade de botões para adicionar ao carrinho e renderização do carrinho
+
+- Renderização do perfil
+
 ## O que não funciona:
+
+- 
