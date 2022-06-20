@@ -40,4 +40,3 @@ const PersonalData = () => {
 }
 
 export default PersonalData
-
