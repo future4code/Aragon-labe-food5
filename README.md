@@ -21,7 +21,7 @@ Senha:123456
 - Renderização dos restaurantes com filtro de busca por restaurante e cards clicáveis para o cardápio
 - Renderização do cardápio
 - Funcionalidade de botões para adicionar ao carrinho e renderização do carrinho
-- Renderização do perfil
+- Renderização do perfil e das páginas de editar perfil
 
 ## O que não funciona:
 
