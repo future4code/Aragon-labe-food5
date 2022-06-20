@@ -104,6 +104,7 @@ function GlobalState(props) {
         addCart: addCart
     };
 
+    
     const context = { states, setters, puts, getters};
 
     return (

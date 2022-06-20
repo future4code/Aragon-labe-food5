@@ -1,4 +1,5 @@
 import React, {useContext } from 'react';
+import Footer from '../components/Footer';
 import GlobalStateContext from "../global/GlobalStateContext"
 import Footer from '../components/Footer';
 import styled from "styled-components";
@@ -95,6 +96,14 @@ function CartPage() {
                         </Payment>
                         <Footer />
         </div >
+                    <article>
+                       <img width={"400px"} src={plate.photoUrl} alt={`foto de ${plate.name}`} />
+                        <h2>{plate.name}</h2>
+                    </article>
+                )
+            })}
+            <Footer/>
+        </div>
     );
 
 }

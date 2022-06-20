@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom"
 import { goToCartPage, goToFeedPage, goToProfile } from "../routes/coordinator"
 import styled from "styled-components";
 
+
 const ContainerFooterIcon = styled.div`
     display: flex;
     justify-content: space-evenly;
@@ -21,6 +22,12 @@ const ContainerFooterIcon = styled.div`
         border-style: solid;
         border-color: white;
     }
+
+const FooterStyled = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
 `
 
 const Footer = () => {
@@ -29,6 +36,7 @@ const Footer = () => {
 
     return (
         <main>
+
             <ContainerFooterIcon>
                 <button>
                     <img src={homepage} onClick={() => goToFeedPage(navigate)}/>
@@ -40,6 +48,13 @@ const Footer = () => {
                     <img src={avatar} onClick={() => goToProfile(navigate)}/>
                 </button>
             </ContainerFooterIcon>
+
+            <FooterStyled>
+                <button><img src={homepage} onClick={() => goToFeedPage(navigate)}/></button>
+                <button><img src={shoppingCart} onClick={() => goToCartPage(navigate)}/></button>
+                <button><img src={avatar} onClick={() => goToProfile(navigate)}/></button>
+            </FooterStyled>
+
         </main>
     )
 }

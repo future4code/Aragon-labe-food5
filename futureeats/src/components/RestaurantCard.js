@@ -20,10 +20,24 @@ function RestaurantCard(props) {
     const navigate = useNavigate()
     return (
 
+
         <Main>
             <section key={props.restaurant?.restaurantId} onClick={() => goToDetailsPage(navigate, props.restaurant?.id)}>
                 <img width={"180px"} src={props.restaurant?.logoUrl} alt={`logo do restaurante ${props.restaurant?.name}`} />
                 <h2>{props.restaurant?.name}</h2>
+
+        <>
+            <section
+                key={props.restaurant?.restaurantId}
+                onClick={() => goToDetailsPage(navigate, props.restaurant?.id)}
+            >
+
+                <hr />
+                <button  >
+
+                    <img width={"200px"} src={props.restaurant?.logoUrl} alt={`logo do restaurante ${props.restaurant?.name}`} /></button>
+                <h2 >{props.restaurant?.name}</h2>
+                
                 {props.isDetail === true && <h2>{props.restaurant?.category}</h2>}
                 <h2>{props.restaurant?.deliveryTime - 10}-
                     {props.restaurant?.deliveryTime + 10} min</h2>
