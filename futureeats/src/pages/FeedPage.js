@@ -94,7 +94,6 @@ function FeedPage() {
 
 
     return (
-        <div>
         <Screencontainer>
             <InputsContainer>
                 <TextField
@@ -106,15 +105,9 @@ function FeedPage() {
                     fullWidth
                 />
                 {showRestaurants}
-
                 <Footer />
-
-                <Button variant="contained" fullWidth onClick={logout} >Sair</Button>
-
             </InputsContainer>
         </Screencontainer>
-        <Footer/>
-        </div>
     );
 }
 

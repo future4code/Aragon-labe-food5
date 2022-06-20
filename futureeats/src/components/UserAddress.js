@@ -5,9 +5,6 @@ import useRequestData from '../hooks/useRequestData';
 import { goToEditAddress } from '../routes/coordinator';
 import EditProfileIcon from "../img/EditProfileIcon.png"
 import styled from 'styled-components';
-import { goToEditProfile } from '../routes/coordinator';
-import EditProfile from "../img/EditProfile.png"
-
 
 const ProfileAddress = styled.div`
     img{
@@ -35,7 +32,6 @@ function UserAddress() {
                 </div>
                 <img src={EditProfileIcon}
                     width={"30px"}
-                <img src={EditProfile}
                     alt={"Caneta de editar"}
                     onClick={() => { goToEditAddress(navigate) }} />
             </section> : <p>Carregando...</p>}     
