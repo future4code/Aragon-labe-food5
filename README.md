@@ -29,3 +29,4 @@ Senha:123456
 - Remover do carrinho
 - Fazer pedido
 - Editar perfil
+- Responsividade
