@@ -7,10 +7,6 @@ import  GlobalStateContext  from "./GlobalStateContext";
 function GlobalState(props) {
 
     const [cart, setCart] = useState([])
-    const [cartId, setCartId] = useState([])
-    const [shipping, setShipping] = useState([])
-    const [shippingId, setShippingId] = useState([])
-    const [isActiveOrder, setIsActiveOrder] = useState(false)
     
     console.log(cart)
     const [login, setLogin] = useState({ email: "", password: "" });
@@ -35,27 +31,12 @@ function GlobalState(props) {
 
     const [restaurants, setRestaurants] = useState([])
 
-   
-
     const token = localStorage.getItem("token-labefood")
 
     const headers = {
         headers: {
             auth: token
         }
-    }
-
-    const getActiveOrder = async () => {
-        try {
-            const response = await axios
-            .get(`${BASE_URL}/active-order`,headers)
-            console.log(response.data)
-            setIsActiveOrder(response.data)
-        }catch (error){
-            console.log(error.response.data.message)
-            return error.response.data
-        }
-
     }
        
     const addCart = (product)=> {
@@ -102,10 +83,7 @@ function GlobalState(props) {
     const getters = {
         getProfile: getProfile,
         getRestaurants: getRestaurants,
-        getActiveOrder:getActiveOrder
     }
-
-    
 
     const states = {
         login: login,

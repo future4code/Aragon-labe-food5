@@ -1,5 +1,5 @@
-import { Button, TextField } from '@mui/material';
-import { goToDetailsPage, goToLoginPage } from '../routes/coordinator';
+import { TextField } from '@mui/material';
+import { goToLoginPage } from '../routes/coordinator';
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import { BASE_URL } from '../constants/urls';
@@ -13,14 +13,13 @@ const Screencontainer = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 100vw;
-    margin-top: 12vh;
+    width: 98vw;
+    margin-bottom: 7vh;
 `
 
 const InputsContainer = styled.form`
     display: flex;
     flex-direction: column;
-    gap: 15px;
     align-items: center;
     width: 100vw;
     max-width: 450px;
@@ -39,7 +38,6 @@ function FeedPage() {
     const [restaurants, setRestaurants] = useState([])
 
     const [find, setFind] = useState("")
-
 
     const logout = () => {
         window.localStorage.removeItem("token-labefood")
@@ -107,10 +105,8 @@ function FeedPage() {
                     fullWidth
                 />
                 {showRestaurants}
-                <Button variant="contained" fullWidth onClick={logout} >Sair</Button>
-                <Footer/>
+                <Footer />
             </InputsContainer>
-
         </Screencontainer>
     );
 }

@@ -3,9 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import RestaurantCard from '../components/RestaurantCard';
 import { BASE_URL } from '../constants/urls';
-import { goToLoginPage, goToFeedPage } from '../routes/coordinator';
+import { goToLoginPage } from '../routes/coordinator';
 import CardItem from './CardItem';
-import { Button } from '@mui/material';
 import styled from "styled-components";
 import Footer from "../components/Footer"
 
@@ -14,13 +13,8 @@ const Screencontainer = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 100vw;
-    margin-top: 12vh;
-
-button{
-    text-transform: capitalize;
-    font-size: 16px;
-}
+    width: 98vw;
+    margin-bottom: 7vh;
 `
 
 function DetailsPage() {
@@ -67,7 +61,7 @@ function DetailsPage() {
 
     const showProducts = restaurantDetails.restaurant &&
      restaurantDetails.restaurant.products.map((product)=> {
-        
+         
         return (
             <CardItem
             key={product.id}
@@ -85,7 +79,6 @@ function DetailsPage() {
                 isDetail={true}
                 />
                 {showProducts}
-                <Button variant="contained" fullWidth onClick={() => goToFeedPage(navigate)}>Voltar</Button>
                 <Footer/>
             </main>
         </Screencontainer>

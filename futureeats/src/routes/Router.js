@@ -1,13 +1,15 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import FeedPage from '../pages/FeedPage';
-import Login from '../pages/Login';
-import SignupAddressPage from '../pages/SignupAddressPage';
 import ScreenPage from '../components/ScreenPage';
+import Login from '../pages/Login';
 import SignupPage from '../pages/SignupPage';
+import SignupAddressPage from '../pages/SignupAddressPage';
+import FeedPage from '../pages/FeedPage';
 import DetailsPage from '../pages/DetailsPage';
-import Profile from '../pages/Profile';
 import CartPage from '../pages/CartPage'
+import Profile from '../pages/Profile';
+import EditProfile from '../pages/EditProfile';
+import EditAddress from '../pages/EditAddress';
 
 function Router () {
 
@@ -17,12 +19,14 @@ function Router () {
 
                 <Route index element={<ScreenPage/>}/>
                 <Route path="/login" element={<Login/>}/>
-                <Route path="/signup/address" element={<SignupAddressPage/>}/>
                 <Route path="/signup" element={<SignupPage/>}/>
-                <Route path="/profile" element={<Profile/>}/>
-                <Route path="/restaurants/:restaurantId" element={<DetailsPage/>}/>
+                <Route path="/signup/address" element={<SignupAddressPage/>}/>
                 <Route path="/feedPage" element={<FeedPage/>}/>
+                <Route path="/restaurants/:restaurantId" element={<DetailsPage/>}/>
                 <Route path="/cart" element={<CartPage/>}/>
+                <Route path="/profile" element={<Profile/>}/>
+                <Route path="/editprofile" element={<EditProfile/>}/>
+                <Route path="/editaddress" element={<EditAddress/>}/>
 
             </Routes>
             </BrowserRouter>

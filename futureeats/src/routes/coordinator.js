@@ -17,12 +17,9 @@ export const goToDetailsPage = (navigate, restaurantId)=> {
 export const goToRestaurant = (navigate) => {
     navigate("/restaurant")
 }
+
 export const goToSignupAddressPage = (navigate) => {
     navigate('/signup/address')
-}
-
-export const goBack = (navigate) => {
-    navigate(-1)
 }
 
 export const goToCartPage = (navigate) => {
@@ -34,9 +31,9 @@ export const goToProfile = (navigate) => {
 }
 
 export const goToEditProfile = (navigate) => {
-    navigate("/")
+    navigate("/editprofile")
 }
 
-// export const goToEditAddress = (navigate)=> {
-//     navigate("")
-// }
+export const goToEditAddress = (navigate)=> {
+     navigate("/editaddress")
+}

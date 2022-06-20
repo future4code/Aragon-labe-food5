@@ -12,12 +12,12 @@ const Screencontainer = styled.div`
     align-items: center;
     justify-content: center;
     width: 100vw;
-    margin-top: 12vh;
+    margin-top: 10vh;
 `
 
 const LogoImage = styled.img`
-    width: 110px;
-    height: 60px;
+    width: 130px;
+    height: 70px;
 `
 
 const InputsContainer = styled.form`
