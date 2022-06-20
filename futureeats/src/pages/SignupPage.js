@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { goToSignupAddressPage } from "../routes/coordinator";
 import GlobalStateContext from "../global/GlobalStateContext";
 import { Button, TextField } from "@mui/material";
 import { requestSignup } from "../services/requests";
@@ -17,8 +16,8 @@ const Screencontainer = styled.div`
 `
 
 const LogoImage = styled.img`
-    width: 110px;
-    height: 60px;
+    width: 130px;
+    height: 70px;
 `
 
 const InputsContainer = styled.form`
@@ -45,7 +44,6 @@ function SignupPage() {
   const { signUp, checker } = context.states;
 
   const { setSignUp, setChecker } = context.setters;
-
 
   const onChangeSignUp = (e) => {
     setSignUp({ ...signUp, [e.target.name]: e.target.value });

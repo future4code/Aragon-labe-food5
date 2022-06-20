@@ -5,6 +5,24 @@ import { useNavigate } from "react-router-dom"
 import { goToCartPage, goToFeedPage, goToProfile } from "../routes/coordinator"
 import styled from "styled-components";
 
+
+const ContainerFooterIcon = styled.div`
+    display: flex;
+    justify-content: space-evenly;
+    position: fixed;
+    height: 6vh;
+    margin-left: 34%;
+    width: 32%;
+    bottom: 0;
+    left: 0;
+    background-color: #fff;
+    border-top: 2px solid #999;
+
+    button{
+        border-style: solid;
+        border-color: white;
+    }
+
 const FooterStyled = styled.div`
     display: flex;
     align-items: center;
@@ -18,11 +36,25 @@ const Footer = () => {
 
     return (
         <main>
+
+            <ContainerFooterIcon>
+                <button>
+                    <img src={homepage} onClick={() => goToFeedPage(navigate)}/>
+                </button>
+                <button>
+                    <img src={shoppingCart} onClick={() => goToCartPage(navigate)}/>
+                </button>
+                <button>
+                    <img src={avatar} onClick={() => goToProfile(navigate)}/>
+                </button>
+            </ContainerFooterIcon>
+
             <FooterStyled>
                 <button><img src={homepage} onClick={() => goToFeedPage(navigate)}/></button>
                 <button><img src={shoppingCart} onClick={() => goToCartPage(navigate)}/></button>
                 <button><img src={avatar} onClick={() => goToProfile(navigate)}/></button>
             </FooterStyled>
+
         </main>
     )
 }

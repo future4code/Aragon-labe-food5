@@ -3,7 +3,15 @@ import { useNavigate } from 'react-router-dom'
 import useProtectedPage from '../hooks/useProtectedPage'
 import useRequestData from '../hooks/useRequestData'
 import { goToEditProfile } from '../routes/coordinator'
-import logoLogin from "../img/logoLogin.png"
+import EditProfileIcon from "../img/EditProfileIcon.png"
+import styled from 'styled-components';
+
+const ProfilePersonal = styled.div`
+    img{
+        margin-left: 250px;
+    }
+`
+
 const PersonalData = () => {
 
     useProtectedPage()
@@ -13,7 +21,7 @@ const PersonalData = () => {
     const dataProfile = useRequestData([], "/profile")
     console.log(dataProfile)
     return (
-        <section>
+        <ProfilePersonal>
             {dataProfile.user ? <div>
                 <div id={"personalData"}>
                     <div>
@@ -21,12 +29,13 @@ const PersonalData = () => {
                         <p id={"email"}>{dataProfile.user.email}</p>
                         <p id={"cpf"}>{dataProfile.user.cpf}</p>
                     </div>
-                    <img src={logoLogin} 
+                    <img src={EditProfileIcon}
+                    width={"30px"}
                     alt={"Caneta de editar"} 
                     onClick={() => goToEditProfile(navigate)} />
                 </div>
             </div> : <p> Carregando...</p>}
-        </section>
+        </ProfilePersonal>
     )
 }
 

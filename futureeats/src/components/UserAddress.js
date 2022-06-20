@@ -2,8 +2,18 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import useProtectedPage from '../hooks/useProtectedPage';
 import useRequestData from '../hooks/useRequestData';
+import { goToEditAddress } from '../routes/coordinator';
+import EditProfileIcon from "../img/EditProfileIcon.png"
+import styled from 'styled-components';
 import { goToEditProfile } from '../routes/coordinator';
 import EditProfile from "../img/EditProfile.png"
+
+
+const ProfileAddress = styled.div`
+    img{
+        margin-left: 250px;
+    }
+`
 
 function UserAddress() {
 
@@ -13,7 +23,7 @@ function UserAddress() {
     const address = useRequestData({}, `/profile/address`)
 
     return (
-        <div>
+        <ProfileAddress>
             {address.address ? <section>
                 <div id={"address"}>
                     <p id={"title"}>Endereço cadastrado</p>
@@ -23,11 +33,13 @@ function UserAddress() {
                 ${address.address.neighbourhood},
                 ${address.address.city}-${address.address.state}`}</p>
                 </div>
+                <img src={EditProfileIcon}
+                    width={"30px"}
                 <img src={EditProfile}
                     alt={"Caneta de editar"}
-                    onClick={() => { goToEditProfile(navigate) }} />
+                    onClick={() => { goToEditAddress(navigate) }} />
             </section> : <p>Carregando...</p>}     
-        </div>
+        </ProfileAddress>
     );
 }
 
